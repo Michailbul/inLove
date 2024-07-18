@@ -1,0 +1,136 @@
+/* Updated Custom styles for the reflection app */
+
+:root {
+  /* Color Palette */
+  --color-primary-background: #FFFFFF;
+  --color-accent: #FF3B30;
+  --color-main-headings: #333333;
+  --color-subheadings: #666666;
+  --color-body-text: #333333;
+  --color-link: #FF3B30;
+  --color-input-text: #333333;
+  
+  /* Pastel Colors */
+  --color-pastel-blue: #E6F3FF;
+  --color-pastel-green: #E6FFF0;
+  --color-pastel-yellow: #FFFEE6;
+  --color-pastel-pink: #FFE6F0;
+
+  /* Typography */
+  --font-family-sans: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-primary-background);
+  color: var(--color-body-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-main-headings);
+}
+
+.subheading {
+  color: var(--color-subheadings);
+}
+
+.accent-color {
+  color: var(--color-accent);
+}
+
+/* Link styles */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover, a:focus {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+a:active {
+  color: var(--color-accent);
+  opacity: 0.8;
+}
+
+/* Input styles */
+input, textarea, select {
+  color: var(--color-input-text);
+  border: 1px solid var(--color-subheadings);
+  padding: 0.5rem;
+  background-color: var(--color-primary-background);
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* Pastel background classes */
+.pastel-bg-blue {
+  background-color: var(--color-pastel-blue);
+}
+
+.pastel-bg-green {
+  background-color: var(--color-pastel-green);
+}
+
+.pastel-bg-yellow {
+  background-color: var(--color-pastel-yellow);
+}
+
+.pastel-bg-pink {
+  background-color: var(--color-pastel-pink);
+}
+
+/* Utility classes for creating airy, lightweight designs */
+.airy-spacing {
+  margin: 2rem 0;
+}
+
+.lightweight-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.minimalist-border {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.airy-padding {
+  padding: 1.5rem;
+}
+
+/* Minimalistic button styles */
+.btn-minimal {
+  background-color: var(--color-primary-background);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-minimal:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary-background);
+}
+
+/* Lightweight input styles */
+.input-minimal {
+  border: none;
+  border-bottom: 1px solid var(--color-subheadings);
+  padding: 0.5rem 0;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.input-minimal:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* Add more custom utility classes as needed */
