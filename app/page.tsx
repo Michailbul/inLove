@@ -1,34 +1,68 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
+import {
+  Box,
+  Flex,
+  VStack,
+  Heading,
+  Textarea,
+  Button,
+  Text,
+  useToast,
+} from '@chakra-ui/react'
+import Sidebar from './components/Sidebar'
 
 export default function Home() {
-  const [reflection, setReflection] = useState('');
+  const [reflection, setReflection] = useState('')
+  const toast = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Send reflection to backend
-    console.log('Submitted:', reflection);
-    setReflection('');
-  };
+    e.preventDefault()
+    console.log('Submitted:', reflection)
+    toast({
+      title: 'Reflection saved.',
+      description: "We've stored your thoughts for today.",
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    })
+    setReflection('')
+  }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-4xl font-bold mb-8">InLove Daily Reflection</h1>
-      <form onSubmit={handleSubmit} className="w-full max-w-lg">
-        <textarea
-          value={reflection}
-          onChange={(e) => setReflection(e.target.value)}
-          placeholder="Enter your daily reflection..."
-          className="w-full h-32 p-2 border rounded"
-        />
-        <button 
-          type="submit"
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Save Reflection
-        </button>
-      </form>
-    </main>
-  );
+    <Flex minHeight="100vh">
+      <Sidebar />
+      <Box flex={1} bg="gray.50" p={8}>
+        <VStack spacing={8} align="center" maxWidth="600px" margin="auto">
+          <Heading fontWeight="light">Daily Reflection</Heading>
+          <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+            <VStack spacing={4} align="stretch">
+              <Textarea
+                value={reflection}
+                onChange={(e) => setReflection(e.target.value)}
+                placeholder="What's on your mind today?"
+                minHeight="200px"
+                bg="white"
+                borderColor="gray.200"
+                _hover={{ borderColor: 'gray.300' }}
+                _focus={{ borderColor: 'gray.400', boxShadow: 'outline' }}
+              />
+              <Text alignSelf="flex-end" fontSize="sm" color="gray.500">
+                {reflection.length}/500
+              </Text>
+              <Button
+                type="submit"
+                colorScheme="blackAlpha"
+                size="lg"
+                width="full"
+              >
+                Save Reflection
+              </Button>
+            </VStack>
+          </form>
+        </VStack>
+      </Box>
+    </Flex>
+  )
 }

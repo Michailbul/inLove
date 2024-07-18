@@ -1,14 +1,21 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import Navbar from './components/Navbar';
+'use client'
 
-const inter = Inter({ subsets: ['latin'] });
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 
-export const metadata: Metadata = {
-  title: 'InLove Reflections',
-  description: 'Daily reflections app',
-};
+const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        bg: 'white',
+        color: 'gray.800',
+      },
+    },
+  },
+  fonts: {
+    heading: 'Inter, sans-serif',
+    body: 'Inter, sans-serif',
+  },
+})
 
 export default function RootLayout({
   children,
@@ -17,10 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Navbar />
-        {children}
+      <body>
+        <ChakraProvider theme={theme}>
+          {children}
+        </ChakraProvider>
       </body>
     </html>
-  );
+  )
 }

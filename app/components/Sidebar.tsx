@@ -1,34 +1,47 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react'
+import {
+  VStack,
+  Heading,
+  Box,
+  Text,
+  Divider,
+} from '@chakra-ui/react'
 
 interface Reflection {
-  id: number;
-  date: string;
-  content: string;
+  id: number
+  date: string
+  content: string
 }
 
 export default function Sidebar() {
-  const [reflections, setReflections] = useState<Reflection[]>([]);
+  const [reflections, setReflections] = useState<Reflection[]>([])
 
   useEffect(() => {
-    // TODO: Fetch reflections from backend
     setReflections([
-      { id: 1, date: '2023-07-18', content: 'Sample reflection 1' },
-      { id: 2, date: '2023-07-17', content: 'Sample reflection 2' },
-      { id: 3, date: '2023-07-16', content: 'Sample reflection 3' },
-    ]);
-  }, []);
+      { id: 1, date: '2023-07-18', content: 'Embraced the beauty of silence today.' },
+      { id: 2, date: '2023-07-17', content: 'Found peace in the simple act of breathing.' },
+      { id: 3, date: '2023-07-16', content: 'Grateful for the small moments of joy.' },
+    ])
+  }, [])
 
   return (
-    <aside className="w-64 h-screen bg-gray-100 p-4 overflow-y-auto">
-      <h2 className="text-xl font-bold mb-4">Past Reflections</h2>
-      {reflections.map(reflection => (
-        <div key={reflection.id} className="mb-4 p-2 bg-white rounded shadow">
-          <h3 className="font-bold text-sm">{reflection.date}</h3>
-          <p className="text-sm truncate">{reflection.content}</p>
-        </div>
-      ))}
-    </aside>
-  );
+    <Box width="300px" height="100vh" bg="white" p={6} overflowY="auto" borderRight="1px" borderColor="gray.200">
+      <VStack align="stretch" spacing={6}>
+        <Heading size="md" fontWeight="light">Past Reflections</Heading>
+        <Divider />
+        {reflections.map(reflection => (
+          <Box key={reflection.id} p={4} bg="gray.50" borderRadius="md" boxShadow="sm" _hover={{ boxShadow: 'md' }} transition="all 0.2s">
+            <Text fontSize="sm" fontWeight="medium" color="gray.600" mb={2}>
+              {reflection.date}
+            </Text>
+            <Text fontSize="sm" noOfLines={3}>
+              {reflection.content}
+            </Text>
+          </Box>
+        ))}
+      </VStack>
+    </Box>
+  )
 }
