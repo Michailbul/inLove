@@ -1,49 +1,53 @@
-import { Box, VStack, IconButton, useDisclosure } from '@chakra-ui/react';
-import { CalendarIcon } from '@chakra-ui/icons';
-import { motion, AnimatePresence } from 'framer-motion';
+'use client'
+import { Box, VStack, Text, IconButton, useDisclosure } from '@chakra-ui/react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import { Reflection } from '../types'
 
-export default function PastReflections() {
-  const { isOpen, onToggle } = useDisclosure();
+interface PastReflectionsProps {
+  reflections: Reflection[];
+}
+
+
+export default function PastReflections({ reflections }) {
+  const { isOpen, onToggle } = useDisclosure()
 
   return (
     <>
       <IconButton
-        aria-label="Open past reflections"
-        icon={<CalendarIcon />}
+        aria-label="Toggle past reflections"
+        icon={isOpen ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         position="fixed"
-        right={4}
-        top={4}
-        borderRadius="full"
+        right={isOpen ? "300px" : 0}
+        top="50%"
+        transform="translateY(-50%)"
         onClick={onToggle}
+        zIndex={2}
+        size="sm"
+        bg="background.secondary"
+        color="text.body"
       />
-      <AnimatePresence>
-        {isOpen && (
-          <Box
-            as={motion.div}
-            initial={{ x: 300 }}
-            animate={{ x: 0 }}
-            exit={{ x: 300 }}
-            transition={{
-              type: "spring",
-              stiffness: 300 as any, // Casting to bypass TypeScript error
-              damping: 30 as any, // Casting to bypass TypeScript error
-            }}
-            position="fixed"
-            right={0}
-            top={0}
-            bottom={0}
-            width="300px"
-            bg="white"
-            boxShadow="md"
-            zIndex={2}
-            overflowY="auto"
-          >
-            <VStack spacing={4} p={4}>
-              {/* Add past reflections list here */}
-            </VStack>
-          </Box>
-        )}
-      </AnimatePresence>
+      <Box
+        position="fixed"
+        right={isOpen ? 0 : "-300px"}
+        top={0}
+        bottom={0}
+        width="300px"
+        bg="background.secondary"
+        boxShadow="md"
+        transition="right 0.3s"
+        zIndex={1}
+        overflowY="auto"
+      >
+        <VStack spacing={4} p={6}>
+          <Text fontSize="lg" fontWeight="medium" color="text.heading">Past Reflections</Text>
+          {reflections.map(reflection => (
+            <Box key={reflection.id} p={4} bg="white" borderRadius="md" width="full" boxShadow="sm">
+              <Text fontSize="sm" fontWeight="bold" color="text.subheading" mb={2}>{reflection.date}</Text>
+              <Text fontSize="sm" color="text.body">{reflection.content}</Text>
+            </Box>
+          ))}
+        </VStack>
+      </Box>
     </>
-  );
+  )
 }

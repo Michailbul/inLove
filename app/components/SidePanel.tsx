@@ -1,3 +1,6 @@
+'use client';
+
+
 import { Box, VStack, IconButton, useDisclosure } from '@chakra-ui/react';
 import { SettingsIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';

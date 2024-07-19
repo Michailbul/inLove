@@ -1,3 +1,6 @@
+'use client';
+
+
 import React, { useState, KeyboardEvent } from 'react';
 import { Box, Input, Tag, TagCloseButton, TagLabel, Wrap, WrapItem } from '@chakra-ui/react';
 
@@ -34,12 +37,13 @@ const TagInput: React.FC<TagInputProps> = ({ tags, setTags }) => {
         onChange={handleInputChange}
         onKeyDown={handleInputKeyDown}
         placeholder="Type a tag and press Enter"
-        mb={2}
+        mb={4}
+        size="lg"
       />
-      <Wrap spacing={2}>
+      <Wrap spacing={3}>
         {tags.map(tag => (
           <WrapItem key={tag}>
-            <Tag size="md" borderRadius="full" variant="solid" colorScheme="blue">
+            <Tag size="lg" borderRadius="full" variant="solid" colorScheme="blue">
               <TagLabel>{tag}</TagLabel>
               <TagCloseButton onClick={() => removeTag(tag)} />
             </Tag>

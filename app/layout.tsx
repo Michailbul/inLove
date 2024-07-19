@@ -1,24 +1,15 @@
-import './globals.css';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+// app/layout.tsx
+import { Inter } from 'next/font/google'
+import ChakraProvider from './components/ChakraProvider'
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'InLove Reflections',
-  description: 'Daily reflections app',
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <ChakraProvider>{children}</ChakraProvider>
       </body>
     </html>
-  );
+  )
 }
