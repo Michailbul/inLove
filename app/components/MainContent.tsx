@@ -14,13 +14,13 @@ export default function MainContent() {
 
   return (
     <Box width="100%" minHeight="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" py={8}>
-      <VStack spacing={8} align="center" width="100%" maxWidth="1200px"> {/* Increased maxWidth */}
+      <VStack spacing={8} align="center" width="100%" maxWidth="1200px">
         <Heading as="h1" size="2xl" fontWeight="light">
           in<Text as="span" color="accent">Love</Text>
         </Heading>
-        {/* <Text fontSize="xl" color="text.subheading" textAlign="center">
+        <Text fontSize="xl" color="text.subheading" textAlign="center">
           What's on your mind today?
-        </Text> */}
+        </Text>
         <ChatComponent onNewReflection={handleNewReflection} />
       </VStack>
       <PastReflections reflections={reflections} />

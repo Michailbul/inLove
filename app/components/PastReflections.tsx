@@ -8,7 +8,7 @@ interface PastReflectionsProps {
 }
 
 
-export default function PastReflections({ reflections }) {
+export default function PastReflections({ reflections }: PastReflectionsProps) {
   const { isOpen, onToggle } = useDisclosure()
 
   return (

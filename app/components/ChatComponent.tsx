@@ -10,13 +10,11 @@ interface ChatComponentProps {
   onNewReflection: (reflection: Reflection) => void;
 }
 
-
 export default function ChatComponent({ onNewReflection }: ChatComponentProps) {
   const [reflection, setReflection] = useState('')
   const [inspiration, setInspiration] = useState('')
 
   useEffect(() => {
-    // Simulating fetching a daily inspiration
     setInspiration("What made you smile today?")
   }, [])
 
@@ -32,7 +30,7 @@ export default function ChatComponent({ onNewReflection }: ChatComponentProps) {
   }
 
   return (
-    <VStack spacing={8} width="100%" maxWidth="800px" align="center">
+    <VStack spacing={8} width="100%" maxWidth="1000px" align="center"> {/* Increased maxWidth */}
       <Text fontSize="lg" color="text.subheading" fontStyle="italic">
         "{inspiration}"
       </Text>
@@ -47,8 +45,8 @@ export default function ChatComponent({ onNewReflection }: ChatComponentProps) {
           onChange={(e) => setReflection(e.target.value)}
           placeholder="Share your thoughts..."
           size="lg"
-          minHeight="150px"
-          maxHeight="200px"
+          minHeight="150px" 
+          maxHeight="200px" 
           resize="vertical"
           borderColor="gray.200"
           _placeholder={{ color: '#CCCCCC' }}
